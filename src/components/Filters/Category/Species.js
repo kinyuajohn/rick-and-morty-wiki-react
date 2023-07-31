@@ -1,6 +1,20 @@
 import React from "react";
+import FilterBTN from "../FilterBTN";
 
-const Species = () => {
+const Species = ({ setSpecies, setPageNumber }) => {
+  let species = [
+    "Human",
+    "Alien",
+    "Humanoid",
+    "Poopybutthole",
+    "Mythological",
+    "Unknown",
+    "Animal",
+    "Disease",
+    "Robot",
+    "Cronenberg",
+    "Planet",
+  ];
   return (
     <div className="accordion-item">
       <h2 className="accordion-header">
@@ -12,7 +26,7 @@ const Species = () => {
           aria-expanded="false"
           aria-controls="collapseTwo"
         >
-          Accordion Item #2
+          Species
         </button>
       </h2>
       <div
@@ -20,15 +34,17 @@ const Species = () => {
         className="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
       >
-        <div className="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is
-          hidden by default, until the collapse plugin adds the appropriate
-          classes that we use to style each element. These classes control the
-          overall appearance, as well as the showing and hiding via CSS
-          transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML
-          can go within the <code>.accordion-body</code>, though the transition
-          does limit overflow.
+        <div className="accordion-body d-flex flex-wrap gap-2">
+          {species.map((item, index) => (
+            <FilterBTN
+              key={index}
+              name="species"
+              item={item}
+              task={setSpecies}
+              setPageNumber={setPageNumber}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </div>
